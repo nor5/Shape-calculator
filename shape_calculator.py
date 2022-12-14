@@ -39,8 +39,15 @@ class Rectangle:
    
   def get_amount_inside(self, shape):
     nbr_shape = 0
-    if self.width % shape.width == 0 and self.height % shape.height == 0:
-      nbr_shape = ( self.width / shape.width )* (self.height / shape.height)
+    if self.width > shape.width  and self.height > shape.height :
+      nbr_shape = ( self.width // shape.width )* (self.height // shape.height)
+     
+   # elif shape.width == 0 or shape.height == 0 or shape. width == None or shape.height == None or self.width == 0 or self.height==0:
+   #  nbr_shape = 0
+     
+    #elif self.width == None or self.height == None or self.width == 0 or self.height==0:
+    # nbr_shape = 0
+     
     return nbr_shape
 
 
