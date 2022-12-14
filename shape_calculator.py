@@ -16,13 +16,13 @@ class Rectangle:
     perimeter = self.width *2 + self.height *2
     return perimeter
   def get_diagonal(self):
-    diagonal = (sel.width ** 2 + self.height ** 2) ** .5
+    diagonal = (self.width ** 2 + self.height ** 2) ** .5
     return diagonal
 
   def get_picture (self):
     picture = ""
-    if self.width >50 and self.height > 50:
-      return "Too big for picture"
+    if self.width >50 or self.height > 50:
+      return "Too big for picture."
     else:
       for i in range (0, self.height):
         for j in range (0, self.width):
@@ -33,12 +33,33 @@ class Rectangle:
       return picture
   
   def __str__(self):
-    rectangle = "Rectangle(width="+ str(self.width)+", height="+str(self.height)+")"
+    rectangle = f"Rectangle(width={str(self.width)}, height={str(self.height)})"
     return  rectangle
-    
+ 
+   
   def get_amount_inside(self, shape):
+    nbr_shape = 0
+    if self.width % shape.width == 0 and self.height % shape.height == 0:
+      nbr_shape = ( self.width / shape.width )* (self.height / shape.height)
+    return nbr_shape
+
+
+class Square(Rectangle):
+  def __init__(self, side):
+        
+        super().__init__(side, side)
+        self.side = side
     
-    return 
 
-
-#class Square:
+  def set_side(self, side):
+    
+    self.side = side
+    super().set_width(side)
+    super().set_height(side)
+  
+  def set_width(self,side):
+    self.set_side(side)
+  def set_height(self,side):
+    self.set_side(side)
+  def __str__(self):
+    return f"Square(side={self.side})"
